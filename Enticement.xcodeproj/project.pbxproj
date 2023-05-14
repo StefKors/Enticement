@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A64D6D12A11A600008F16DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8AC325AE2A118C3200712F0F /* Enticement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enticement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC325B12A118C3200712F0F /* EnticementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnticementApp.swift; sourceTree = "<group>"; };
 		8AC325B32A118C3200712F0F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		8AC325B02A118C3200712F0F /* Enticement */ = {
 			isa = PBXGroup;
 			children = (
+				8A64D6D12A11A600008F16DA /* Info.plist */,
 				8AC325B12A118C3200712F0F /* EnticementApp.swift */,
 				8AC325B32A118C3200712F0F /* Persistence.swift */,
 				8AC325B82A118C3200712F0F /* ContentView.swift */,
@@ -277,6 +279,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Enticement/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -315,6 +319,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Enticement/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

@@ -8,6 +8,59 @@
 import SwiftUI
 import CoreData
 
+struct CheckItemView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @ObservedObject var item: Item
+
+    var body: some View {
+        HStack {
+            Button {
+                withAnimation(.spring()) {
+                    print("tap!")
+                    item.setValue(!item.isCompleted, forKey: "isCompleted")
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        // Replace this implementation with code to handle the error appropriately.
+                        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                        let nsError = error as NSError
+                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    }
+                }
+            } label: {
+                Label {
+                    Text(item.text!)
+                } icon: {
+                    ZStack {
+                        if item.isCompleted {
+                            Circle().fill()
+                                .transition(.scale.combined(with: .opacity))
+                        } else {
+                            Circle().stroke()
+                                .transition(.scale.combined(with: .opacity))
+                            Circle().fill().opacity(0.3)
+                                .transition(.scale.combined(with: .opacity))
+                        }
+                    }
+                    .clipShape(Circle())
+                }
+            }
+            .buttonStyle(.plain)
+            Spacer()
+            Button(role: .destructive) {
+                withAnimation(.spring()) {
+                    viewContext.delete(item)
+                }
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            .buttonStyle(.plain)
+            .labelStyle(.iconOnly)
+        }
+    }
+}
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -16,38 +69,29 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
 
+    @State private var editorContent: String = ""
+
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+        List {
+            TextField("Todo Input", text: $editorContent, prompt: Text("Write here..."))
+                .onSubmit {
+                    addItem(label: editorContent)
+                    editorContent = ""
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+            ForEach(items) { item in
+                HStack {
+                    CheckItemView(item: item)
                 }
             }
-            Text("Select an item")
+            .onDelete(perform: deleteItems)
         }
     }
 
-    private func addItem() {
+    private func addItem(label: String) {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.text = label
 
             do {
                 try viewContext.save()
