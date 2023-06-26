@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8AC223D52A13D5B100BF2594 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC223D42A13D5B100BF2594 /* ShareViewController.swift */; };
 		8AC223D82A13D5B100BF2594 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC223D62A13D5B100BF2594 /* MainInterface.storyboard */; };
-		8AC223DC2A13D5B100BF2594 /* iOSShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8AC223D22A13D5B100BF2594 /* iOSShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AC223DC2A13D5B100BF2594 /* iOSShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8AC223D22A13D5B100BF2594 /* iOSShareExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AC223E22A13D5DE00BF2594 /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC223E12A13D5DE00BF2594 /* SafariWebView.swift */; };
 		8AC223E42A13D60B00BF2594 /* CheckItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC223E32A13D60B00BF2594 /* CheckItemView.swift */; };
 		8AC223E72A13D64200BF2594 /* Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC223E62A13D64200BF2594 /* Substring.swift */; };
@@ -48,6 +48,19 @@
 
 /* Begin PBXFileReference section */
 		8A64D6D12A11A600008F16DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8A998D702A49B387007EB7CC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		8A998D722A49B387007EB7CC /* Screenshot-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-dark.png"; sourceTree = "<group>"; };
+		8A998D732A49B387007EB7CC /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
+		8A998D742A49B387007EB7CC /* ipados-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ipados-active.svg"; sourceTree = "<group>"; };
+		8A998D752A49B387007EB7CC /* Screenshot-light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-light.png"; sourceTree = "<group>"; };
+		8A998D762A49B387007EB7CC /* ios-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "ios-active.svg"; sourceTree = "<group>"; };
+		8A998D772A49B387007EB7CC /* watchos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "watchos-active.svg"; sourceTree = "<group>"; };
+		8A998D782A49B387007EB7CC /* tvos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = tvos.svg; sourceTree = "<group>"; };
+		8A998D792A49B387007EB7CC /* ipados.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ipados.svg; sourceTree = "<group>"; };
+		8A998D7A2A49B387007EB7CC /* macos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "macos-active.svg"; sourceTree = "<group>"; };
+		8A998D7B2A49B387007EB7CC /* ios.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ios.svg; sourceTree = "<group>"; };
+		8A998D7C2A49B387007EB7CC /* macos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = macos.svg; sourceTree = "<group>"; };
+		8A998D7D2A49B387007EB7CC /* tvos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tvos-active.svg"; sourceTree = "<group>"; };
 		8AC223D22A13D5B100BF2594 /* iOSShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iOSShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC223D42A13D5B100BF2594 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8AC223D72A13D5B100BF2594 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -84,6 +97,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A998D712A49B387007EB7CC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8A998D722A49B387007EB7CC /* Screenshot-dark.png */,
+				8A998D732A49B387007EB7CC /* watchos.svg */,
+				8A998D742A49B387007EB7CC /* ipados-active.svg */,
+				8A998D752A49B387007EB7CC /* Screenshot-light.png */,
+				8A998D762A49B387007EB7CC /* ios-active.svg */,
+				8A998D772A49B387007EB7CC /* watchos-active.svg */,
+				8A998D782A49B387007EB7CC /* tvos.svg */,
+				8A998D792A49B387007EB7CC /* ipados.svg */,
+				8A998D7A2A49B387007EB7CC /* macos-active.svg */,
+				8A998D7B2A49B387007EB7CC /* ios.svg */,
+				8A998D7C2A49B387007EB7CC /* macos.svg */,
+				8A998D7D2A49B387007EB7CC /* tvos-active.svg */,
+			);
+			path = Images;
+			sourceTree = SOURCE_ROOT;
+		};
 		8AC223D32A13D5B100BF2594 /* iOSShareExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +137,8 @@
 		8AC325A52A118C3200712F0F = {
 			isa = PBXGroup;
 			children = (
+				8A998D702A49B387007EB7CC /* README.md */,
+				8A998D712A49B387007EB7CC /* Images */,
 				8AC325B02A118C3200712F0F /* Enticement */,
 				8AC223D32A13D5B100BF2594 /* iOSShareExtension */,
 				8AC325AF2A118C3200712F0F /* Products */,
@@ -276,6 +310,7 @@
 /* Begin PBXTargetDependency section */
 		8AC223DB2A13D5B100BF2594 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 8AC223D12A13D5B100BF2594 /* iOSShareExtension */;
 			targetProxy = 8AC223DA2A13D5B100BF2594 /* PBXContainerItemProxy */;
 		};
@@ -491,7 +526,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.Enticement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -532,7 +569,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.Enticement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
