@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="Enticement/Assets.xcassets/AppIcon.appiconset/mac1024.png" height="128">
+  <img src="Enticement/Assets.xcassets/AppIcon.appiconset/Large Icon512.png" height="128">
   <h1 align="center">Enticement</h1>
 </p>
 
-![Enticement](https://github.com/StefKors/Enticement) is a simple native macOS app for getting the SwiftUI color code from the system color picker. Written in SwiftUI.
+![Enticement](https://github.com/StefKors/Enticement) a small app to make lists of internet things.
 
 #### Supported Platforms
 <p align="left">
@@ -38,11 +38,19 @@
 </picture>
 </p>
 
+<p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="Images/Screenshot-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="Images/Screenshot-light.png">
-  <img alt="Screenshot of the app" src="Images/Screenshot-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="Images/Screenshot-1.png">
+  <source media="(prefers-color-scheme: light)" srcset="Images/Screenshot-1.png">
+  <img alt="Screenshot of the app" src="Images/Screenshot-1.png">
 </picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/Screenshot-2.png">
+  <source media="(prefers-color-scheme: light)" srcset="Images/Screenshot-2.png">
+  <img alt="Screenshot of the app" src="Images/Screenshot-2.png">
+</picture>
+</p>
 
 -------
 

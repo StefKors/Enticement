@@ -6,38 +6,24 @@
 //
 
 import UIKit
-import Social
+import SwiftData
 import SwiftUI
+import UniformTypeIdentifiers
+
 
 @objc(ShareExtensionViewController)
-class ShareViewController: UIHostingController<ShareView> {
-    required init?(coder aDecoder: NSCoder) {
-        let view = ShareView(label: "testing")
-        super.init(coder: aDecoder, rootView: view)
-    }
+class ShareViewController: UIViewController {
+
+    // override var prefersStatusBarHidden: Bool { true }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // UserPreferences.hasOpenedShareSheet = true
-        // viewModel.delegate = self
-        // self.handleSharedURL()
-    }
-}
+        let contentView = ShareContentView()
+            .modelContainer(for: EntryItem.self)
+            .environment(\.extensionContext, extensionContext)
 
-// extension ShareViewController: ShareViewModelDelegate {
-//     func didFinish(cancelled: Bool) {
-//         if cancelled, let domain = Bundle.main.bundleIdentifier {
-//             extensionContext?.cancelRequest(withError: NSError(domain: domain, code: 0))
-//         } else {
-//             extensionContext?.completeRequest(returningItems: nil)
-//         }
-//     }
-// }
-
-struct ShareView: View {
-    @State public var label: String
-
-    var body: some View {
-        Text(label)
+        view = UIHostingView(rootView: contentView)
+        view.isOpaque = true
+        view.backgroundColor = .systemBackground
     }
 }

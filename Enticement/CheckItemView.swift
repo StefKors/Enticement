@@ -9,9 +9,8 @@ import SwiftUI
 import CoreData
 
 struct CheckItemView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @ObservedObject var item: Item
+    @Environment(\.modelContext) private var modelContext
+    var item: EntryItem
     @State private var isPresentWebView = false
 
     @State private var editorContent: String = ""
@@ -26,54 +25,48 @@ struct CheckItemView: View {
 
     var body: some View {
         HStack {
-            if let text = item.text {
-                Button {
-                    handleTap()
-                } label: {
-                    Label {
-                        //
-                    } icon: {
-                        ZStack {
-                            if item.isCompleted {
-                                Circle().fill()
-                                    .transition(.scale.combined(with: .opacity))
-                            } else {
-                                Circle().stroke()
-                                    .transition(.scale.combined(with: .opacity))
-                                Circle().fill().opacity(0.3)
-                                    .transition(.scale.combined(with: .opacity))
-                            }
-                        }
-                        .clipShape(Circle())
+            Button {
+                handleTap()
+            } label: {
+                ZStack {
+                    if item.isCompleted {
+                        Circle().fill()
+                            .transition(.scale.combined(with: .opacity))
+                    } else {
+                        Circle().stroke()
+                            .transition(.scale.combined(with: .opacity))
+                        Circle().fill().opacity(0.3)
+                            .transition(.scale.combined(with: .opacity))
                     }
                 }
-                .buttonStyle(.plain)
+                .clipShape(Circle())
+                .frame(maxHeight: 20)
+            }
 
-                TextField("Todo Input", text: $editorContent, prompt: Text("Write here..."))
-                    .submitScope(true)
-                    .submitLabel(.next)
-                    .focused($focus, equals: .generalInput)
-                    .onSubmit(of: .text, {
-                        print("submit text")
-                    })
-                    .onSubmit {
-                        print("submit generic")
-                        // handleSubmit()
-                    }
+            TextField("Todo Input", text: $editorContent, prompt: Text("Write here..."))
+                .submitScope(true)
+                .submitLabel(.next)
+                .focused($focus, equals: .generalInput)
+                .onSubmit(of: .text, {
+                    print("submit text")
+                })
+                .onSubmit {
+                    print("submit generic")
+                    // handleSubmit()
+                }
 
-                Spacer()
-                if let browserUrl {
-                    Button {
-                        isPresentWebView = true
-                    } label: {
-                        Image(systemName: "globe")
-                    }
-                    .sheet(isPresented: $isPresentWebView) {
-                        SafariWebView(url: browserUrl)
-                            .ignoresSafeArea()
-                            .presentationDragIndicator(.visible)
-                            .presentationDetents([.medium, .large])
-                    }
+            Spacer()
+            if let browserUrl {
+                Button {
+                    isPresentWebView = true
+                } label: {
+                    Image(systemName: "globe")
+                }
+                .sheet(isPresented: $isPresentWebView) {
+                    SafariWebView(url: browserUrl)
+                        .ignoresSafeArea()
+                        .presentationDragIndicator(.visible)
+                        .presentationDetents([.medium, .large])
                 }
             }
         }
@@ -81,17 +74,13 @@ struct CheckItemView: View {
             handleSubmit()
         })
         .onChange(of: item) { newValue in
-            if let text = newValue.text {
-                editorContent = text
-            }
+            editorContent = item.text
         }
         .task(id: item.text) {
-            if let text = item.text {
-                editorContent = text
-            }
+            editorContent = item.text
         }
         .task(id: item.text) {
-            guard let text = item.text else { return }
+            let text = item.text
             let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
             let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
 
@@ -108,17 +97,7 @@ struct CheckItemView: View {
 
     func handleTap() {
         withAnimation(.spring()) {
-            item.setValue(!item.isCompleted, forKey: "isCompleted")
-
-            do {
-                try viewContext.save()
-                viewContext.refresh(item, mergeChanges:true)
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            item.setValue(for: \.isCompleted, to: !item.isCompleted)
         }
     }
 
@@ -128,24 +107,14 @@ struct CheckItemView: View {
 
     private func updateItem(label: String) {
         withAnimation {
-            item.setValue(label, forKey: "text")
-
-            do {
-                try viewContext.save()
-                viewContext.refresh(item, mergeChanges:true)
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            item.setValue(for: \.text, to: label)
         }
     }
 }
 
 struct CheckItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckItemView(item: Item())
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        CheckItemView(item: .preview)
+            .modelContainer(for: EntryItem.self, inMemory: true)
     }
 }

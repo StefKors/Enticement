@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct TextFieldView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.modelContext) private var modelContext
 
     @State private var editorContent: String = ""
     enum Field: Hashable {
@@ -55,19 +55,8 @@ struct TextFieldView: View {
 
     private func addItem(label: String) {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            newItem.text = label
-
-            do {
-                try viewContext.save()
-                viewContext.refresh(newItem, mergeChanges:true)
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            let newItem = EntryItem(timestamp: Date.now, text: label, isCompleted: false)
+            modelContext.insert(newItem)
         }
     }
 }
@@ -75,6 +64,6 @@ struct TextFieldView: View {
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         TextFieldView()
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .modelContainer(for: EntryItem.self, inMemory: true)
     }
 }
