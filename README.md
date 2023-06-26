@@ -42,13 +42,13 @@
 <picture width="200">
   <source media="(prefers-color-scheme: dark)" srcset="Images/Screenshot-1.png">
   <source media="(prefers-color-scheme: light)" srcset="Images/Screenshot-1.png">
-  <img alt="Screenshot of the app" src="Images/Screenshot-1.png">
+  <img alt="Screenshot of the app" width="200" src="Images/Screenshot-1.png">
 </picture>
 
 <picture width="200">
   <source media="(prefers-color-scheme: dark)" srcset="Images/Screenshot-2.png">
   <source media="(prefers-color-scheme: light)" srcset="Images/Screenshot-2.png">
-  <img alt="Screenshot of the app" src="Images/Screenshot-2.png">
+  <img alt="Screenshot of the app" width="200" src="Images/Screenshot-2.png">
 </picture>
 </p>
 
